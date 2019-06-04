@@ -31,3 +31,33 @@ body {
 .font-black {
   font-family: Roboto-Black, sans-serif;
 }
+
+button:focus {
+  outline: none;
+}
+
+.kine-input {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid white;
+}
+
+@media only screen and (max-width: 700px) {
+
+  .mobile-hide {
+    display: none !important;
+  }
+
+  .mobile-margintop {
+    margin-top: 100px;
+  }
+
+  .mobile-title {
+    font-size: 22px !important;
+  }
+
+  .mobile-desc {
+    font-size: 18px !important;
+  }
+  
+}

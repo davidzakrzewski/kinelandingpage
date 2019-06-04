@@ -8,12 +8,17 @@ const StyledButton = styled.button`
     background-color: transparent;
     font-family: Roboto-${props => props.fontWeight ? props.fontWeight : "Medium"}, sans-serif;
     color: ${props => props.color};
+    
+    &:focus:active {
+        outline: 0;
+        transform: scale(0.98);
+    }
 `;
 
 class MainButton extends React.Component {
     render() {
         return (
-            <StyledButton color={this.props.color} fontWeight={this.props.fontWeight}>
+            <StyledButton className={this.props.className} onClick={this.props.onClick} color={this.props.color} fontWeight={this.props.fontWeight}>
                 {this.props.text}
             </StyledButton>
         );

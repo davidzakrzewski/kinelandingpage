@@ -3,10 +3,13 @@ import {
     BrowserRouter as Router,
     Route
 }   from "react-router-dom";
-import Home from './pages/home/home'
+import Home from './pages/home/home';
+import Tarifs from './pages/tarifs/tarifs';
 import './App.css';
 import MainNav from "./components/nav";
 import {utils} from "./utils";
+import Contact from "./pages/contact";
+import Checkout from "./pages/checkout";
 
 const style = {
     color: utils.colors.mainBlack
@@ -18,14 +21,19 @@ const content = {
 
 function App() {
     return (
-        <Router>
-            <div style={style}>
-                <MainNav/>
-                <div style={content}>
-                    <Route exact path="/" component={Home}/>
+        <div>
+            <MainNav/>
+            <Router>
+                <div style={style}>
+                    <div style={content}>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/tarifs" component={Tarifs}/>
+                        <Route exact path="/contact" component={Contact}/>
+                        <Route exact path="/checkout" component={Checkout}/>
+                    </div>
                 </div>
-            </div>
-        </Router>
+            </Router>
+        </div>
     );
 }
 

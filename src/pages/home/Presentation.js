@@ -35,13 +35,13 @@ class Presentation extends React.Component {
                     <Col className="d-flex justify-content-center">
                         <Row className="w-75">
                             <Col>
-                                <BlackText size={"30px"}>
+                                <BlackText size={"30px"} className="mobile-title">
                                     Innovez la rééducation
                                     de vos patients avec
                                     le logiciel d’analyse de mouvements
                                     le plus efficace.
                                 </BlackText>
-                                <ThinText size={"24px"}>
+                                <ThinText size={"24px"} className="mobile-desc">
                                     Optimisez les résultats de vos patients avec une solution en ligne qui optimise vos séances
                                 </ThinText>
                                 <div style={{marginTop: "20px"}}>
@@ -51,7 +51,7 @@ class Presentation extends React.Component {
                         </Row>
                     </Col>
 
-                    <Col>
+                    <Col className="mobile-hide">
                         <img src={main_picture} alt="dashboard-exemple" style={{width: "70%", height: "auto"}}/>
                     </Col>
                 </Row>
