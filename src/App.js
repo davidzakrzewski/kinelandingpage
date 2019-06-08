@@ -2,7 +2,7 @@ import React from 'react';
 import {
     BrowserRouter as Router,
     Route
-}   from "react-router-dom";
+} from "react-router-dom";
 import Home from './pages/home/home';
 import Tarifs from './pages/tarifs/tarifs';
 import './App.css';
@@ -27,9 +27,9 @@ function App() {
                 <div style={style}>
                     <div style={content}>
                         <Route exact path="/" component={Home}/>
-                        <Route exact path="/tarifs" component={Tarifs}/>
-                        <Route exact path="/contact" component={Contact}/>
-                        <Route exact path="/checkout" component={Checkout}/>
+                        <Route path="/tarifs" component={Tarifs}/>
+                        <Route path="/contact" component={Contact}/>
+                        <Route path="/checkout" component={Checkout}/>
                     </div>
                 </div>
             </Router>

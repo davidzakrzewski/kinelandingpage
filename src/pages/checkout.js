@@ -6,6 +6,7 @@ import {utils} from "../utils";
 import MainButton from "../components/buttonRounded";
 import Footer from "../components/footer";
 import {Link} from "react-router-dom";
+import mailService from "../services/mailService";
 
 const MainContainer = styled.div`
     height: calc(100vh - ${utils.navHeight});
@@ -56,7 +57,8 @@ class Checkout extends React.Component {
             card_number: '',
             card_expire: '',
             card_code: '',
-            showAlert: false
+            showAlert: false,
+            thanks: false
         }
     }
 
@@ -71,7 +73,7 @@ class Checkout extends React.Component {
         }
     };
 
-    orderNow = () => {
+    orderNow = async () => {
         let {email, card_number, card_expire, card_code} = this.state;
 
         if (email === "" || card_code === "" || card_expire === "" || card_number === "") {
@@ -80,9 +82,18 @@ class Checkout extends React.Component {
             });
         }
         else {
-            this.setState({
-                showAlert: false
-            });
+
+            let res = await mailService.orderNow(email);
+
+            if (res.success === true) {
+                this.setState({
+                    showAlert: false,
+                    thanks: true
+                });
+            }
+            else {
+                console.log('error');
+            }
         }
     };
 
@@ -110,6 +121,59 @@ class Checkout extends React.Component {
         })
     };
 
+    renderThanks = () => {
+        let {thanks} = this.state;
+
+        if (thanks === true) {
+            return (
+                <Row className="mt-auto mb-auto">
+                    <Col className="d-flex flex-column justify-content-center align-items-center">
+                        <div className="text-center">
+                            <div className="title">Merci d'avoir commandé Kine+</div>
+                        </div>
+                    </Col>
+                </Row>
+            )
+        }
+        else {
+            return (
+                <>
+                    <Row className="mt-auto mb-auto">
+                        <Col className="d-flex flex-column justify-content-center align-items-center">
+                            <div className="text-center">
+                                <div className="title">Abonnement Kine+</div>
+                                <div className="desc">19€/mois</div>
+                            </div>
+                            <div className="mt-5">
+                                <input type="text" onChange={this.handleEmail} value={this.state.email} className="kine-input c-input" placeholder="Email"/>
+                            </div>
+                            <div className="mt-4">
+                                <input type="text" onChange={this.handleNb} value={this.state.card_number} className="kine-input c-input" placeholder="Numéro de carte"/>
+                            </div>
+
+                            <div className="mt-4">
+                                <input type="text" onChange={this.handleExpire} value={this.state.card_expire} className="kine-input c-input" placeholder="Date d'expiration"/>
+                            </div>
+
+                            <div className="mt-4">
+                                <input type="text" onChange={this.handleCode} value={this.state.card_code} className="kine-input c-input" placeholder="Code CVC/CVV"/>
+                            </div>
+                        </Col>
+                    </Row>
+
+                    <Row className="mt-xl-5">
+                        <Col className="d-flex align-items-center">
+                            <Link to="/tarifs">Revenir aux tarifs</Link>
+                        </Col>
+                        <Col className="d-flex align-items-center">
+                            <MainButton fontWeight="Black" onClick={this.orderNow} text="Commander maintenant" color={utils.colors.darkBlue}/>
+                        </Col>
+                    </Row>
+                </>
+            )
+        }
+    };
+
     render() {
         return (
             <>
@@ -118,37 +182,7 @@ class Checkout extends React.Component {
                     <Row className="d-flex h-75 justify-content-center align-items-center">
                         <Col className="d-flex justify-content-center">
                             <CheckoutBox className="p-3 d-flex justify-content-between flex-column">
-                                <Row className="mt-auto mb-auto">
-                                    <Col className="d-flex flex-column justify-content-center align-items-center">
-                                        <div className="text-center">
-                                            <div className="title">Abonnement Kine+</div>
-                                            <div className="desc">19€/mois</div>
-                                        </div>
-                                        <div className="mt-5">
-                                            <input type="text" onChange={this.handleEmail} value={this.state.email} className="kine-input c-input" placeholder="Email"/>
-                                        </div>
-                                        <div className="mt-4">
-                                            <input type="text" onChange={this.handleNb} value={this.state.card_number} className="kine-input c-input" placeholder="Numéro de carte"/>
-                                        </div>
-
-                                        <div className="mt-4">
-                                            <input type="text" onChange={this.handleExpire} value={this.state.card_expire} className="kine-input c-input" placeholder="Date d'expiration"/>
-                                        </div>
-
-                                        <div className="mt-4">
-                                            <input type="text" onChange={this.handleCode} value={this.state.card_code} className="kine-input c-input" placeholder="Code CVC/CVV"/>
-                                        </div>
-                                    </Col>
-                                </Row>
-
-                                <Row className="mt-xl-5">
-                                    <Col className="d-flex align-items-center">
-                                        <Link to="/tarifs">Revenir aux tarifs</Link>
-                                    </Col>
-                                    <Col className="d-flex align-items-center">
-                                        <MainButton fontWeight="Black" onClick={this.orderNow} text="Commander maintenant" color={utils.colors.darkBlue}/>
-                                    </Col>
-                                </Row>
+                                {this.renderThanks()}
                             </CheckoutBox>
                         </Col>
                     </Row>
