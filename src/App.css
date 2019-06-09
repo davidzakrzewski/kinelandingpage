@@ -42,6 +42,10 @@ button:focus {
   border-bottom: 2px solid white;
 }
 
+.mobile-show {
+  display: none;
+}
+
 @media only screen and (max-width: 700px) {
 
   .mobile-hide {
@@ -58,6 +62,32 @@ button:focus {
 
   .mobile-desc {
     font-size: 18px !important;
+  }
+
+  .col {
+    padding: 0;
+  }
+
+  textarea {
+    width: 100% !important;
+  }
+
+  .mobile-nav {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .mobile-mt {
+    margin-top: 20px;
+  }
+
+  .mobile-show {
+    display: flex;
+  }
+
+  .mobile-w-100 {
+    width: 100% !important;
   }
   
 }

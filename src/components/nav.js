@@ -38,14 +38,15 @@ class MainNav extends React.Component {
                     <Navbar.Brand href="/">Kine+</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
+                        <Nav className="mr-auto mobile-nav">
                             <Nav.Link href="/">Accueil</Nav.Link>
                             <Nav.Link href="/tarifs">Tarifs</Nav.Link>
                             <NavDropdown title="Ressources" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="/contact">Contact</NavDropdown.Item>
                             </NavDropdown>
+                            <MainButton className="mobile-mt mobile-show" color={utils.colors.mainGreen} text="Essai Gratuit" primary/>
                         </Nav>
-                        <MainButton color={utils.colors.mainGreen} text="Essai Gratuit" primary/>
+                        <MainButton className="mobile-hide" color={utils.colors.mainGreen} text="Essai Gratuit" primary/>
                     </Navbar.Collapse>
                 </Navbar>
             </Styles>

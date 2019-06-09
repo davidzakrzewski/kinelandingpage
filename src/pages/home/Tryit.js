@@ -54,14 +54,14 @@ class Tryit extends React.Component {
                 <Style>
                     <Row className="h-100 d-flex">
                         <Col className="d-flex justify-content-center align-items-center">
-                            <div className="w-25 d-flex flex-column justify-content-center align-items-center">
-                                <div className="ti-title text-center mobile-title">
+                            <div className="w-25 d-flex flex-column justify-content-center align-items-center mobile-w-100">
+                                <div className="mobile-mt ti-title text-center mobile-title">
                                     Essayez le logiciel de rééducation Kine+
                                 </div>
-                                <Button className="btn-try mt-xl-5">
+                                <Button className="mobile-mt btn-try mt-xl-5">
                                     Je veux essayer
                                 </Button>
-                                <div className="ti-desc mt-xl-5 text-center">Essai gratuit de 15 jours - Sans engagement</div>
+                                <div className="mobile-mt ti-desc mt-xl-5 text-center">Essai gratuit de 15 jours - Sans engagement</div>
                             </div>
                         </Col>
                     </Row>

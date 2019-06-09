@@ -14,7 +14,6 @@ const MainContainer = styled.div`
 `;
 
 const CheckoutBox = styled.div`
-    width: 500px;
     height: 500px;
     border-radius: 5px;
     box-shadow: 0 0 8px hsla(0, 0%, 11%, 0.11) !important;
@@ -161,7 +160,7 @@ class Checkout extends React.Component {
                         </Col>
                     </Row>
 
-                    <Row className="mt-xl-5">
+                    <Row className="mt-xl-5 pl-3 pr-3">
                         <Col className="d-flex align-items-center">
                             <Link to="/tarifs">Revenir aux tarifs</Link>
                         </Col>

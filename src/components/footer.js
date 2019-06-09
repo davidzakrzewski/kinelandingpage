@@ -22,7 +22,7 @@ const Style = styled.div`
 class Footer extends React.Component {
     render() {
         return (
-            <Style className="d-flex justify-content-center">
+            <Style className="d-flex justify-content-center mobile-hide">
                 <div className="h-100 p-xl-5 w-75 d-flex justify-content-center align-content-center">
                     <Row className="w-100 d-flex align-content-center">
                         <Col className="d-flex align-items-center flex-column">
